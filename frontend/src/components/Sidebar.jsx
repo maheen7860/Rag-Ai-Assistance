@@ -20,29 +20,31 @@ export default function Sidebar({ messages }) {
   };
 
   return (
-    <div className="w-72 h-screen bg-[#ffffff85] text-[#5a5757900] flex flex-col fixed left-0 top-0">
+    <div className="w-72 h-screen fixed left-0 top-0 flex flex-col sidebar-glass">
 
       {/* Header */}
-      <div className="py-6 text-xl font-semibold text-center"> 
+      <div className="py-6 text-lg font-semibold text-center tracking-wide text-[#bcdcff] border-b border-[#00d4ff33]">
         Chat History
       </div>
 
       {/* History List */}
-      <div className="flex-1 overflow-hidden px-4 space-y-2">
+      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
+
         {messages.map((msg, i) =>
           msg.role === "user" ? (
             <div
               key={i}
-              className="p-3 text-sm bg-white/60 rounded-lg truncate"
+              className="p-3 text-sm bg-[#0d2a4f66] rounded-lg border border-[#00d4ff22] text-[#cfefff] truncate hover:bg-[#0d2a4f99] transition"
             >
               {msg.content}
             </div>
           ) : null
         )}
+
       </div>
 
       {/* Upload Button */}
-      <div className="p-4">
+      <div className="p-5 border-t border-[#00d4ff22]">
         <input
           type="file"
           accept=".pdf"
@@ -53,7 +55,7 @@ export default function Sidebar({ messages }) {
 
         <button
           onClick={() => fileInputRef.current.click()}
-          className="w-full flex items-center justify-center gap-2 bg-[#2f5ea8] text-white py-2 rounded-lg hover:bg-[#244b87] transition"
+          className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-[#d8ecff] border border-[#00d4ff44] bg-[#0d2a4f80] hover:bg-[#0d2a4faa] transition neon-glow"
         >
           <FaFileUpload />
           Upload PDF
@@ -63,7 +65,3 @@ export default function Sidebar({ messages }) {
     </div>
   );
 }
-
-
-
-

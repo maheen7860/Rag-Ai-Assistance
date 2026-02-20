@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import { FaMicrophone } from "react-icons/fa";
 
 export default function ChatWindow({
   messages,
@@ -56,57 +57,66 @@ export default function ChatWindow({
 
     setLoading(false);
   };
+return (
+  <div className="flex flex-col flex-1 min-h-0">
 
-  return (
-    <div className="flex flex-col flex-1">
+    {/* Messages Area */}
+    <div className="flex-1 overflow-y-auto px-16 py-10 flex flex-col gap-8 chat-scroll">
 
-      {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto px-8 py-6 flex flex-col gap-6">
-
-        {messages.map((msg, index) => (
-          <div
-            key={index}
-            className={`message-enter glass-card px-6 py-4 rounded-2xl max-w-[720px] ${
-              msg.role === "user"
-                ? "self-end bg-white/10"
-                : "self-start bg-black/40"
-            }`}
-          >
-            <div className="whitespace-pre-wrap leading-relaxed text-sm md:text-base">
-              {msg.content}
-            </div>
+      {messages.map((msg, index) => (
+        <div
+          key={index}
+          className={`message-enter px-6 py-4 rounded-xl max-w-[720px] border ${
+            msg.role === "user"
+              ? "self-end bg-[#0d2a4f88] border-[#00d4ff33]"
+              : "self-start bg-[#071426cc] border-[#00d4ff22]"
+          }`}
+        >
+          <div className="whitespace-pre-wrap text-[#cfefff] text-sm md:text-base leading-relaxed">
+            {msg.content}
           </div>
-        ))}
-
-        {loading && (
-          <div className="self-start typing text-sm opacity-70">
-            AI is thinking
-          </div>
-        )}
-
-        <div ref={chatEndRef}></div>
-      </div>
-
-      {/* Input Section */}
-      <div className="px-8 pb-6">
-        <div className="flex w-full max-w-[900px] mx-auto">
-          <input
-            className="flex-1 bg-white/10 backdrop-blur-lg rounded-l-full px-6 py-3 outline-none placeholder-gray-300"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask something futuristic..."
-            onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-          />
-          <button
-            onClick={sendMessage}
-            disabled={loading}
-            className="bg-gradient-to-r from-indigo-600 to-blue-600 px-8 py-3 rounded-r-full hover:scale-110 transition duration-300 shadow-lg"
-          >
-            Send
-          </button>
         </div>
+      ))}
+
+      {loading && (
+        <div className="self-start text-[#7fbfff] text-sm opacity-80">
+          AI is thinking...
+        </div>
+      )}
+
+      <div ref={chatEndRef}></div>
+
+    </div>
+
+    {/* Futuristic Input */}
+    <div className="px-16 pb-8 shrink-0">
+
+      <div className="futuristic-input flex items-center max-w-[900px] mx-auto neon-glow">
+
+        <div className="pl-5 text-[#00d4ff] text-lg">
+          <FaMicrophone />
+        </div>
+
+        <input
+          className="flex-1 bg-transparent px-5 py-3 outline-none text-[#d8ecff] placeholder-[#6eaed6]"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Ask something futuristic..."
+          onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+        />
+
+        <button
+          onClick={sendMessage}
+          disabled={loading}
+          className="neon-button px-8 py-3 text-white mr-2"
+        >
+          Send
+        </button>
+
       </div>
 
     </div>
-  );
+
+  </div>
+);
 }

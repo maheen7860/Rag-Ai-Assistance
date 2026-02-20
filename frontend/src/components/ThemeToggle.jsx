@@ -12,9 +12,15 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-full bg-white/20 backdrop-blur-md hover:scale-110 transition"
+      className="w-10 h-10 flex items-center justify-center rounded-full
+                 border border-[#00d4ff55]
+                 bg-[#071426aa]
+                 text-[#00d4ff]
+                 transition-all duration-300
+                 hover:shadow-[0_0_15px_#00d4ff]
+                 hover:scale-110"
     >
-      {dark ? <FaSun /> : <FaMoon />}
+      {dark ? <FaSun size={14} /> : <FaMoon size={14} />}
     </button>
   );
 }

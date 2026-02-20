@@ -11,25 +11,27 @@ export default function App() {
   const [loading, setLoading] = useState(false);
 
   return (
-    <div className="h-screen bg-animated relative overflow-hidden">
+    <div className="h-screen relative overflow-hidden">
 
+      {/* Background Particles */}
       <ParticlesBg />
 
-      {/* Sidebar (Fixed) */}
+      {/* Sidebar */}
       <Sidebar messages={messages} />
 
-      {/* Main Content */}
+      {/* Cyber streak */}
+      <div className="cyber-streak"></div>
+
+      {/* Main Layout */}
       <div className="ml-72 h-screen flex flex-col">
 
         {/* Header */}
-        <div className="h-20 flex items-center justify-center relative">
+        <div className="h-20 flex items-center justify-center relative shrink-0">
 
-          {/* Center Title */}
-          <h1 className="text-4xl font-bold text-black">
-            ⚡ RAG AI Assistant
+          <h1 className="text-3xl font-semibold tracking-wide text-[#d8ecff]">
+             RAG AI ASSISTANCE
           </h1>
 
-          {/* Toggle Right */}
           <div className="absolute right-10">
             <ThemeToggle />
           </div>

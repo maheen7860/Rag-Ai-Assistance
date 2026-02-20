@@ -2,28 +2,117 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
+/* ===========================
+   Base Background
+=========================== */
 
 body {
   margin: 0;
-  height: 100%;
   font-family: "Inter", sans-serif;
-  background-color: #0f172a;
+  background: radial-gradient(circle at 50% 30%, #0d2a4f 0%, #071426 70%);
+  color: #d8ecff;
+  overflow: hidden;
+  position: relative;
 }
 
-/* Custom scrollbar */
+/* ===========================
+   Tech Grid Overlay
+=========================== */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 200, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 200, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===========================
+   Soft Vignette
+=========================== */
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    transparent 60%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  pointer-events: none;
+}
+
+/* ===========================
+   Enhanced Neon Glow
+=========================== */
+
+.neon-glow {
+  box-shadow:
+    0 0 10px rgba(0, 200, 255, 0.5),
+    0 0 30px rgba(0, 200, 255, 0.4),
+    0 0 60px rgba(0, 200, 255, 0.3);
+}
+
+/* ===========================
+   Glass Panel
+=========================== */
+
+.glass-panel {
+  background: rgba(0, 40, 80, 0.35);
+  backdrop-filter: blur(22px);
+  border: 1px solid rgba(0, 200, 255, 0.3);
+  box-shadow:
+    inset 0 0 30px rgba(0, 200, 255, 0.05),
+    0 0 20px rgba(0, 200, 255, 0.1);
+}
+
+
+
+/* ===========================
+   Visible Cyber Scrollbar
+=========================== */
+
+.chat-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.chat-scroll::-webkit-scrollbar-track {
+  background: rgba(0, 40, 80, 0.3);
+  border-radius: 10px;
+}
+
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #00d4ff,
+    #2563eb
+  );
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00d4ff;
+}
+
+.chat-scroll::-webkit-scrollbar-thumb:hover {
+  background: #00d4ff;
+}
+
+.chat-scroll {
+  scroll-behavior: smooth;
+}
+
+/* ===========================
+   Scrollbar
+=========================== */
+
 ::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #9333ea, #ec4899);
+  background: rgba(0, 200, 255, 0.4);
   border-radius: 10px;
 }
